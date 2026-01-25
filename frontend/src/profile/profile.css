@@ -1,0 +1,124 @@
+.profilePage {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; 
+  min-height: calc(100vh - 140px);
+  padding: 60px 20px;
+  background-color: #ffffff; 
+  box-sizing: border-box;
+}
+.profileContainer {
+  width: 100%;
+  max-width: 1000px;
+  background-color: #f2f2f2;
+  height: fit-content; 
+  align-self: flex-start; 
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.profileHeader {
+  display: flex;
+  align-items: center;
+  padding: 10px 25px;
+  gap: 20px;
+  background-color: #e0e0e0; 
+}
+
+.profileTitleMain {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 900;
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.profileEditBtnTop {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 18px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.profileContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 40px 50px;
+  gap: 25px 60px;
+}
+.profileColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.profileRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid transparent; 
+}
+.profileLabel {
+  font-weight: 900;
+  font-style: italic;
+  font-size: 16px;
+  text-align: left;
+  flex: 1;
+}
+.profileValue {
+  font-weight: 900;
+  font-size: 16px;
+  text-align: left;
+  flex: 1;
+}
+.profileLogoutBtnTop {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 18px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+.loginPromptContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  gap: 20px;
+}
+.loginPromptText {
+  font-weight: 900;
+  font-style: italic;
+  font-size: 18px;
+  text-transform: lowercase;
+  margin: 0;
+}
+.profileBtnPrimary {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  padding: 4px 18px;
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.regSubmit {
+  width: 220px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+  align-self: center;
+  display: block;
+  margin: 20px auto 20px auto;
+}

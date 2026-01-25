@@ -1,0 +1,10 @@
+.sortBar{
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  gap:10px;
+  padding: 12px 24px;
+}
+.sortBar select{
+  height: 26px;
+}

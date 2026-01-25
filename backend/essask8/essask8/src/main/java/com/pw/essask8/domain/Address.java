@@ -12,26 +12,19 @@ import lombok.*;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "addresses_id_seq")
-    @SequenceGenerator(name = "addresses_id_seq", sequenceName = "addresses_id_seq", allocationSize = 1)
-    @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(nullable = false, length = 50)
     private String country;
-
-    @Column(nullable = false, length = 30)
     private String city;
-
-    @Column(nullable = false, length = 30)
     private String street;
-
-    @Column(name = "building_number", nullable = false, length = 5)
+    
+    @Column(name = "building_number")
     private String buildingNumber;
-
-    @Column(name = "apartment_number", length = 4)
+    
+    @Column(name = "apartment_number")
     private String apartmentNumber;
-
-    @Column(name = "postal_code", nullable = false, length = 6)
+    
+    @Column(name = "postal_code")
     private String postalCode;
 }

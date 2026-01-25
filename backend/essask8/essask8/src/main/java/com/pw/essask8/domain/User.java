@@ -6,10 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
 import java.time.LocalDate;
-// import java.time.LocalDateTime;
-
 import java.util.List;
 
 @Entity
@@ -51,12 +48,15 @@ public class User {
     private LocalDate creationDate;
 
     @Column(name = "is_staff", nullable = false)
-    private Boolean isStaff = false;
+    private Boolean staff = false;
 
     @OneToOne
     @JoinColumn(name = "addresses_id", nullable = false)
     private Address address;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orders;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    private Cart cart;
 }

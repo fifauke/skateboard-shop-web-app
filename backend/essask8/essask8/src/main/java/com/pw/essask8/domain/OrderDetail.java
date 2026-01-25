@@ -3,6 +3,8 @@ package com.pw.essask8.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Getter
 @Setter
@@ -18,12 +20,15 @@ public class OrderDetail {
 
     @ManyToOne
     @JoinColumn(name = "orders_id", nullable = false)
-    private Order ordersId;
+    private Order order;
 
     @ManyToOne
     @JoinColumn(name = "products_id", nullable = false)
-    private Product productsId;
+    private Product product;
 
     @Column(nullable = false)
     private Integer quantity;
+
+    @Column(name = "fixed_price", precision = 10, scale = 2)
+    private BigDecimal fixedPrice;
 }

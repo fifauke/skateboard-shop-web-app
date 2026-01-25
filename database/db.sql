@@ -9,6 +9,7 @@ CREATE SEQUENCE addresses_id_seq
 
 CREATE TABLE "addresses"(
   "id" integer NOT NULL DEFAULT nextval('addresses_id_seq'),
+  "country" varchar(50) NOT NULL,
   "city" varchar(30) NOT NULL,
   "street" varchar(30) NOT NULL,
   "building_number" varchar(5) NOT NULL,
@@ -42,33 +43,29 @@ CREATE TABLE "manufacturers"(
   CONSTRAINT "manufacturers_pkey" PRIMARY KEY(id)
 );
 
-CREATE SEQUENCE orders_details_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    MINVALUE 1
-    NO MAXVALUE
-    CACHE 1;
+CREATE SEQUENCE orders_details_id_seq START WITH 1 INCREMENT BY 1 MINVALUE 1 NO MAXVALUE CACHE 1;
 
 CREATE TABLE "order_details"(
   "id" integer NOT NULL DEFAULT nextval('orders_details_id_seq'),
   "orders_id" integer NOT NULL,
   "products_id" integer NOT NULL,
   "quantity" integer NOT NULL,
+  "fixed_price" NUMERIC(10, 2) NOT NULL,
   CONSTRAINT "order_details_pkey" PRIMARY KEY(id)
 );
 
-CREATE SEQUENCE orders_id_seq
-    START WITH 1
-    INCREMENT BY 1
-    MINVALUE 1
-    NO MAXVALUE
-    CACHE 1;
+CREATE SEQUENCE orders_id_seq START WITH 1 INCREMENT BY 1 MINVALUE 1 NO MAXVALUE CACHE 1;
 
 CREATE TABLE "orders"(
   "id" integer NOT NULL DEFAULT nextval('orders_id_seq'),
   "price" NUMERIC(10, 2) NOT NULL,
   "order_date" date NOT NULL,
+  "order_status" varchar(20) NOT NULL,
   "users_id" integer NOT NULL,
+  "delivery_method" varchar(50),
+  "payment_method" varchar(50),
+  "shipping_cost" NUMERIC(10, 2),
+  "total_amount" NUMERIC(10, 2),
   CONSTRAINT "orders_pkey" PRIMARY KEY(id)
 );
 
@@ -105,7 +102,7 @@ CREATE SEQUENCE photos_id_seq
 
 CREATE TABLE "photos"(
   "id" integer NOT NULL DEFAULT nextval('photos_id_seq'),
-  "path" varchar(100) NOT NULL,
+  "path" varchar(255) NOT NULL,
   "products_id" integer NOT NULL,
   CONSTRAINT "photos_pkey" PRIMARY KEY(id)
 );
@@ -141,11 +138,45 @@ CREATE TABLE "users"(
   CONSTRAINT "users_pkey" PRIMARY KEY(id)
 );
 
+CREATE SEQUENCE carts_id_seq 
+    START WITH 1 
+    INCREMENT BY 1 
+    MINVALUE 1 
+    NO MAXVALUE 
+    CACHE 1;
+
+CREATE TABLE "carts"(
+  "id" integer NOT NULL DEFAULT nextval('carts_id_seq'),
+  "users_id" integer NOT NULL,
+  CONSTRAINT "carts_pkey" PRIMARY KEY(id)
+);
+
+CREATE SEQUENCE cart_items_id_seq 
+START WITH 1 
+INCREMENT BY 1 
+MINVALUE 1 
+NO MAXVALUE CACHE 1;
+
+CREATE TABLE "cart_items"(
+  "id" integer NOT NULL DEFAULT nextval('cart_items_id_seq'),
+  "carts_id" integer NOT NULL,
+  "products_id" integer NOT NULL,
+  "quantity" integer NOT NULL,
+  CONSTRAINT "cart_items_pkey" PRIMARY KEY(id)
+);
+
 ALTER TABLE "stores" 
-ADD CONSTRAINT "fk_stores_addresses" FOREIGN KEY ("adresses_id") REFERENCES "addresses"("id");
+ADD CONSTRAINT "fk_stores_addresses" FOREIGN KEY ("addresses_id") REFERENCES "addresses"("id");
 
 ALTER TABLE "users" 
-ADD CONSTRAINT "fk_users_addresses" FOREIGN KEY ("adresses_id") REFERENCES "addresses"("id");
+ADD CONSTRAINT "fk_users_addresses" FOREIGN KEY ("addresses_id") REFERENCES "addresses"("id");
+
+ALTER TABLE "carts" 
+ADD CONSTRAINT "fk_carts_users" FOREIGN KEY ("users_id") REFERENCES "users"("id");
+
+ALTER TABLE "cart_items" 
+ADD CONSTRAINT "fk_cart_items_carts" FOREIGN KEY ("carts_id") REFERENCES "carts"("id"),
+ADD CONSTRAINT "fk_cart_items_products" FOREIGN KEY ("products_id") REFERENCES "products"("id");
 
 ALTER TABLE "employees" 
 ADD CONSTRAINT "fk_employees_stores" FOREIGN KEY ("stores_id") REFERENCES "stores"("id"),
@@ -165,9 +196,7 @@ ALTER TABLE "order_details"
 ADD CONSTRAINT "fk_order_details_orders" FOREIGN KEY ("orders_id") REFERENCES "orders"("id"),
 ADD CONSTRAINT "fk_order_details_products" FOREIGN KEY ("products_id") REFERENCES "products"("id");
 
-INSERT INTO "stores" ("id", "name", "email_address", "phone_number", "addresses_id")
-VALUES
-(1, 'essa sk8', 'info@essa.com', '123-456-789', '1234567890', 1);
+TRUNCATE TABLE "order_details", "orders", "cart_items", "carts", "employees", "products", "users", "stores", "addresses", "manufacturers", "photos" RESTART IDENTITY CASCADE;
 
 INSERT INTO "manufacturers" ("id", "name")
 VALUES
@@ -183,11 +212,17 @@ VALUES
     ('Poland', 'Cisie', 'Główna', '6', NULL, '05-074'),
     ('Poland', 'Warsaw', 'Kozia', '37', NULL, '00-070');  
 
-INSERT INTO "users" ("username", "password", "email_adress", "phone_number", "name", "last_name", "second_name", "creation_date", "is_staff", "addressess_id")
+INSERT INTO "stores" ("id", "name", "email_address", "phone_number", "addresses_id")
+VALUES
+(1, 'essa sk8', 'info@essa.com', '1234567890', 1);
+
+INSERT INTO "users" ("username", "password", "email_address", "phone_number", "name", "last_name", "second_name", "creation_date", "is_staff", "addresses_id")
 VALUES
 ('gkoms', '3oda', 'gbrzeczyszczykiewicz@onet.pl', '882243567', 'Grzegorz', 'Brzęczyszczykiewicz', NULL, '2025-05-11', true, 2),
 ('karma', 'medusa2115', 'kamilapilot@gmail.com', '243567882', 'Kamila', 'Pilot', NULL, '2025-05-11', true, 3),
-('milosz2009', '#54&cv56', 'milosz2009@gmail.com', '567243882', 'Miłosz', 'Smoczek', NULL, '2025-05-11', false, 4),
+('milosz2009', '#54&cv56', 'milosz2009@gmail.com', '567243882', 'Miłosz', 'Smoczek', NULL, '2025-05-11', false, 4);
+
+INSERT INTO "carts" ("users_id") VALUES (1), (2), (3);
 
 INSERT INTO "employees" ("gender", "birth_date", "pesel", "hire_date", "bank_account_number", "stores_id", "users_id")
 VALUES
@@ -293,3 +328,12 @@ VALUES
     1, 
     4
 );
+
+INSERT INTO "orders" ("price", "order_date", "order_status", "users_id") 
+VALUES (2445.00, '2025-05-11', 'PAID', 1);
+
+INSERT INTO "order_details" ("orders_id", "products_id", "quantity", "fixed_price") 
+VALUES (1, 1, 5, 489.00);
+
+INSERT INTO "cart_items" ("carts_id", "products_id", "quantity")
+VALUES (1, 2, 1);

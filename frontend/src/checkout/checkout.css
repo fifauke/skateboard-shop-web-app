@@ -1,0 +1,145 @@
+.checkoutPage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 140px);
+    padding: 60px 20px;
+    background-color: #ffffff;
+    font-family: 'Arial', sans-serif;
+}
+
+.checkoutContainer {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #f2f2f2; 
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.checkoutHeaderBar {
+    background-color: #e0e0e0; 
+    padding: 15px 30px;
+    border-bottom: 1px solid #d1d1d1;
+}
+
+.checkoutTitle {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 900;
+    font-style: italic;
+    text-transform: lowercase; 
+    color: #000;
+}
+
+.checkoutContent {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr; 
+    gap: 40px;
+    padding: 40px;
+}
+
+.checkoutSection {
+    margin-bottom: 30px;
+}
+
+.sectionHeader {
+    font-size: 18px;
+    font-weight: 900;
+    font-style: italic;
+    margin-bottom: 20px;
+    text-transform: lowercase;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+    display: inline-block;
+}
+
+.checkoutInputGroup {
+    margin-bottom: 15px;
+}
+
+.checkoutLabel {
+    display: block;
+    font-weight: 900;
+    font-style: italic;
+    font-size: 14px;
+    margin-bottom: 5px;
+    text-transform: lowercase;
+    color: #555;
+}
+
+.checkoutInput, 
+.checkoutSelect {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    background-color: #fff;
+    font-family: inherit;
+    font-weight: 700;
+    font-size: 15px;
+    box-sizing: border-box; 
+}
+
+.checkoutInput:focus,
+.checkoutSelect:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.orderSummaryBox {
+    background-color: #ffffff;
+    padding: 30px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    height: fit-content;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.summaryRow {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-weight: 700;
+    font-size: 15px;
+    color: #333;
+}
+
+.totalRow {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid #000;
+    font-weight: 900;
+    font-size: 22px;
+    font-style: italic;
+    color: #000;
+}
+
+.placeOrderBtn {
+    width: 100%;
+    margin-top: 30px;
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 30px; 
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 900;
+    font-style: italic;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.placeOrderBtn:hover {
+    background-color: #333;
+    transform: translateY(-2px);
+}
+
+.placeOrderBtn:disabled {
+    background-color: #777;
+    cursor: not-allowed;
+    transform: none;
+}

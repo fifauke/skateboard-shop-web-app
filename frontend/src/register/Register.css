@@ -1,0 +1,111 @@
+.registerPage {
+  padding: 32px 16px;
+  display: flex;
+  justify-content: center;
+}
+
+.registerCard {
+  width: 100%;
+  max-width: 920px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.registerLogo {
+  width: 160px;
+  height: auto;
+}
+
+.registerTitle {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.registerForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.registerGrid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 20px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.regInput {
+  height: 40px;
+  border-radius: 999px;
+  border: none;
+  background: #c8d7f2;
+  padding: 0 16px;
+  font-size: 14px;
+  outline: none;
+}
+
+.regSpacer {
+  height: 40px;
+}
+
+.regSubmit {
+  width: 220px;
+  height: 38px;
+  border-radius: 999px;
+  border: none;
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+  cursor: pointer;
+}
+.regSubmit:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+.regMsg {
+  margin: 0;
+  font-weight: 700;
+}
+.regError {
+  color: #b00020;
+}
+.regOk {
+  color: #0a7a2f;
+}
+.regDateRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.regDateLabel {
+  font-size: 14px;
+  white-space: nowrap;
+  opacity: 0.85;
+}
+.regInputDate {
+  width: 160px; 
+  padding-left: 14px;
+  padding-right: 10px;
+}
+.regInputDate::-webkit-datetime-edit {
+  background: transparent;
+}
+.regInputDate::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.7;
+}
+select.regInput--error,
+input.regInput--error {
+  border: 2px solid red !important;
+  outline-offset: 2px;
+}
+

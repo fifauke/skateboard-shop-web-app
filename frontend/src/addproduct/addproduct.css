@@ -1,0 +1,118 @@
+.addProductPage {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 140px);
+    padding: 60px 20px;
+    background-color: #ffffff;
+    box-sizing: border-box;
+}
+.addProductContainer {
+    width: 100%;
+    max-width: 1000px;
+    background-color: #f2f2f2; 
+    height: fit-content; 
+    align-self: flex-start; 
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); 
+}
+.formMainTitle {
+    background-color: #e0e0e0; 
+    margin: 0;
+    padding: 10px 25px; 
+    font-size: 24px; 
+    font-weight: 900;
+    font-style: italic;
+    text-transform: lowercase;
+    border-bottom: 1px solid #d1d1d1;
+}
+.sk8Form {
+    padding: 10px 50px; 
+    display: flex;
+    flex-direction: column;
+}
+.formGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px 60px; 
+}
+.formColumn {
+    display: flex;
+    flex-direction: column;
+    gap: 25px; 
+}
+.inputRow {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.inputRow label {
+    font-weight: 900;
+    font-style: italic;
+    font-size: 16px; 
+    text-transform: lowercase;
+    color: #000;
+    flex: 1;
+}
+.inputRow input {
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    padding: 6px 12px;
+    width: 200px;
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 16px;
+}
+.descriptionSection {
+    margin-top: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.descriptionSection label {
+    font-weight: 900;
+    font-style: italic;
+    font-size: 16px; 
+    text-transform: lowercase;
+}
+.formDescription {
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    min-height: 150px;
+    padding: 15px;
+    resize: none;
+    font-family: inherit;
+    font-weight: 900;
+    font-size: 16px;
+}
+.formFooterActions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+.submitBtn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 20px; 
+    padding: 8px 35px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+.cancelBtn {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    border-radius: 20px; 
+    padding: 8px 35px;
+    font-size: 12px;
+    font-weight: 800;
+    cursor: pointer;
+    text-transform: uppercase;
+   }

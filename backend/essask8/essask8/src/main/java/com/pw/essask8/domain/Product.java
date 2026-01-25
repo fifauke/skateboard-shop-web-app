@@ -2,8 +2,8 @@ package com.pw.essask8.domain;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -57,8 +57,8 @@ public class Product {
     @JoinColumn(name="manufacturers_id", nullable = false)
     private Manufacturer manufacturer;
 
-    @OneToMany(mappedBy = "product")
-    private List<Photo> photos;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Photo> photos = new ArrayList<>();
 
     @OneToMany(mappedBy = "product")
     private List<OrderDetail> orderDetails;
